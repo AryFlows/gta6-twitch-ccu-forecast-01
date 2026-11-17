@@ -17,7 +17,9 @@ The forecast combines two views of the past launches shipped in each case (`comp
 
 The centre is 0.7 × local + 0.3 × global; the spread is the weighted standard deviation of the ratios, shrunk by 0.7 and floored at 0.25. Quantiles are lognormal: `q = p1 · exp(centre + z · sd)`. Launches flagged early-access-contaminated are excluded (their hour-1 print is pre-unlock hype, not a launch hour).
 
-Tuned on the four practice launches (practice pinball loss **0.157**, house baseline 0.387) and on a leave-one-out run over the comparable launches (restricted LOO 0.278).
+**v2 — launch-class matching:** a comparable whose launch class matches the target's gets its weight doubled, once per trait — platform class (console-only vs PC-inclusive) and unlock pattern (rolling midnight-local vs single global/simultaneous). The target's class is read from the case notes. Console-only rolling launches keep rising into US prime time while PC-inclusive or single-unlock launches mostly decay from hour 1, so matching bends the centre the right way for both kinds of target.
+
+Tuned on the four practice launches (practice pinball loss **0.155**, house baseline 0.387) and on a leave-one-out run over the comparable launches (restricted LOO 0.267, clean LOO 0.252) — against 0.157 / 0.278 / 0.258 for the same blend without matching.
 
 ## Run it
 
